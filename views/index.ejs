@@ -14,10 +14,15 @@
   <div class="main">
     <h6> Was this useful?</h6>
     <form action="" method="post">
-      <button type="submit">
-        <i class="fa fa-thumbs-up"></i>
-        &nbsp;&nbsp;&nbsp;&nbsp;<%= count %> people found this useful!
-      </button>
+        <button type="submit">
+          <div style="display:flex; flex-direction:row">
+            <img src="thumbs_up.png" width="40"></img>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <div style="padding-top:9px;">
+              <%= count %> people found this useful!
+            </div>
+          </div>
+        </button>
     </form>
   </div>
 </body>
