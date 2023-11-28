@@ -61,7 +61,7 @@ app.post("/", async (req, res) => {
       values: [[count]]
     },
   });
-  // res.send(getRows);
+  res.render("index", {count, count});
 });
 
 app.listen(1337, (req, res) => console.log("running on 1337"));

@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <link rel="stylesheet"
+  href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="index.css" />
 </head>
 
 <body>
   <div class="main">
+    <h6> Was this useful?</h6>
     <form action="" method="post">
-      <button type="submit">Was this useful?</button>
+      <button type="submit">
+        <i class="fa fa-thumbs-up"></i>
+        &nbsp;&nbsp;&nbsp;&nbsp;<%= count %> people found this useful!
+      </button>
     </form>
-    <h5 id="counter">Useful Counter: <%= count %>
-    </h5>
-
   </div>
 </body>
 </html>
