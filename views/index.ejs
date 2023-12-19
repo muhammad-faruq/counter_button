@@ -10,20 +10,51 @@
   <link rel="stylesheet" type="text/css" href="index.css" />
 </head>
 
-<body>
+<body style="background: rgba(0, 0, 0, 0);">
   <div class="main">
-    <h6> Was this useful?</h6>
-    <form action="" method="post">
+    <h3> Did you find this useful?</h3>
+    <div style="display: flex; justify-content: center;">
+      <form id="incrementForm" action="/increment" method="POST">
         <button type="submit">
-          <div style="display:flex; flex-direction:row">
-            <img src="thumbs_up.png" width="40"></img>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <div style="padding-top:9px;">
-              <%= count %> people found this useful!
-            </div>
-          </div>
+          <img src="1.png" width="50"></img>
         </button>
-    </form>
+      </form>
+      <form id="decrementForm" action="/decrement" method="POST">
+        <button type="submit">
+          <img src="2.png" width="50"></img>
+        </button>
+      </form>
+
+    </div>
+    <script>
+        async function updateRatio() {
+            try {
+                const response = await fetch('/get-ratio');
+                const data = await response.json();
+                document.querySelector('h7').innerText = `${data.ratio}% of people found this useful!`;
+            } catch (error) {
+                console.error('Error updating ratio:', error);
+            }
+        }
+
+        document.getElementById('incrementForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            await fetch('/increment', { method: 'POST' });
+            updateRatio();
+        });
+
+        document.getElementById('decrementForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            await fetch('/decrement', { method: 'POST' });
+            updateRatio();
+        });
+
+        // Initial update when the page loads
+        updateRatio();
+    </script>
+    <h7 style="padding-top:9px; font-size: 20px;">
+      <%= ratio %>% of people found this useful!
+    </h7>
   </div>
 </body>
 </html>
